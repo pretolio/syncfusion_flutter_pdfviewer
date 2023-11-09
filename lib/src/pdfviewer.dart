@@ -16,6 +16,7 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui';
+import 'dart:async';
 
 import 'package:async/async.dart';
 import 'package:flutter/foundation.dart';
@@ -1603,9 +1604,9 @@ class SfPdfViewerState extends State<SfPdfViewer> with WidgetsBindingObserver {
                         onFieldSubmitted: (String value) {
                           _handlePasswordValidation();
                         },
-                        validator: (String? value) async {
+                        validator: (String? value) {
                           try {
-                            await _decryptedProtectedDocument(_pdfBytes, value);
+                            _decryptedProtectedDocument(_pdfBytes, value);
                           } catch (e) {
                             if (widget.onDocumentLoadFailed != null) {
                               if (value!.isEmpty) {
