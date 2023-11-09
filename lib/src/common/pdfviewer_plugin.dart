@@ -77,7 +77,7 @@ class PdfViewerPlugin {
   ///  Retrieves PDF pages as image collection for specified pages.
   Future<Map<int, List<dynamic>>?> getSpecificPages(int startPageIndex,
       int endPageIndex, double currentScale, bool isZoomChanged) async {
-    imageCache!.clear();
+    imageCache.clear();
     _startPageIndex = startPageIndex;
     _endPageIndex = endPageIndex;
     for (int pageIndex = _startPageIndex;
@@ -104,7 +104,7 @@ class PdfViewerPlugin {
 
   /// Dispose the rendered pages
   Future<void> closeDocument() async {
-    imageCache!.clear();
+    imageCache.clear();
     if (_documentID != null) {
       await PdfViewerPlatform.instance.closeDocument(_documentID!);
     }
